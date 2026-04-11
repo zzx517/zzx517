@@ -1,9 +1,7 @@
 
-## Hello! 👋
-
 <div align="center">
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&width=435&lines=你好！祝您今天愉快！&center=true&size=27)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&width=435&lines=你好！祝您今天愉快！;Hello!+Have+a+nice+day!&center=true&size=27)](https://git.io/typing-svg)
 
 <picture>
   <source
