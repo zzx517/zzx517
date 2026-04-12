@@ -5,9 +5,29 @@
 
 </div>
 
-![zzx517's GitHub stats](https://raw.githubusercontent.com/zzx517/zzx517/refs/heads/grs_output/github-readme-stats.svg)
+<picture>
+  <source
+    media="(prefers-color-scheme: dark)"
+    srcset="https://raw.githubusercontent.com/zzx517/zzx517/refs/heads/grs_output/github-readme-stats-dark.svg">
+  <source
+    media="(prefers-color-scheme: light)"
+    srcset="https://raw.githubusercontent.com/zzx517/zzx517/refs/heads/grs_output/github-readme-stats.svg">
+  <img
+    alt="github contribution grid snake animation"
+    src="https://raw.githubusercontent.com/zzx517/zzx517/refs/heads/grs_output/github-readme-stats.svg">
+</picture>
 
-![zzx517's top languages](https://raw.githubusercontent.com/zzx517/zzx517/refs/heads/grs_output/github-readme-top-langs.svg)
+<picture>
+  <source
+    media="(prefers-color-scheme: dark)"
+    srcset="https://raw.githubusercontent.com/zzx517/zzx517/refs/heads/grs_output/github-readme-top-langs-dark.svg">
+  <source
+    media="(prefers-color-scheme: light)"
+    srcset="https://raw.githubusercontent.com/zzx517/zzx517/refs/heads/grs_output/github-readme-top-langs.svg">
+  <img
+    alt="github contribution grid snake animation"
+    src="https://raw.githubusercontent.com/zzx517/zzx517/refs/heads/grs_output/github-readme-top-langs.svg">
+</picture>
 
 <div align="center">
 <picture>
