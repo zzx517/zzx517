@@ -10,6 +10,7 @@ jobs:
       contents: write
 
     strategy:
+      max-parallel: 1
       matrix:
         theme: [default, default_repocard, transparent, shadow_red, shadow_green, shadow_blue, dark, radical, merko, gruvbox, gruvbox_light, tokyonight, onedark, cobalt, synthwave, highcontrast, dracula, prussian, monokai, vue, vue-dark, shades-of-purple, nightowl, buefy, blue-green, algolia, great-gatsby, darcula, bear, solarized-dark, solarized-light, chartreuse-dark, nord, gotham, material-palenight, graywhite, vision-friendly-dark, ayu-mirage, midnight-purple, calm, flag-india, omni, react, jolly, maroongold, yeblu, blueberry, slateorange, kacho_ga, outrun, ocean_dark, city_lights, github_dark, github_dark_dimmed, discord_old_blurple, aura_dark, panda, noctis_minimus, cobalt2, swift, aura, apprentice, moltack, codeSTACKr, rose_pine, catppuccin_latte, catppuccin_mocha, date_night, one_dark_pro, rose, holi, neon, blue_navy, calm_pink, ambient_gradient]
 
@@ -25,13 +26,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: push *.svg to the output branch
-        uses: crazy-max/ghaction-github-pages@v5.0.0
+      - name: Upload artifact for stats ${{ matrix.theme }}
+        uses: actions/upload-artifact@v4
         with:
-          target_branch: grs_example
-          build_dir: profile
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          name: github-readme-stats-theme_${{ matrix.theme }}
+          path: profile/github-readme-stats-theme_${{ matrix.theme }}.svg
+          retention-days: 1
 
 
   top-langs_theme:
@@ -40,6 +40,7 @@ jobs:
       contents: write
 
     strategy:
+      max-parallel: 1
       matrix:
         theme: [default, default_repocard, transparent, shadow_red, shadow_green, shadow_blue, dark, radical, merko, gruvbox, gruvbox_light, tokyonight, onedark, cobalt, synthwave, highcontrast, dracula, prussian, monokai, vue, vue-dark, shades-of-purple, nightowl, buefy, blue-green, algolia, great-gatsby, darcula, bear, solarized-dark, solarized-light, chartreuse-dark, nord, gotham, material-palenight, graywhite, vision-friendly-dark, ayu-mirage, midnight-purple, calm, flag-india, omni, react, jolly, maroongold, yeblu, blueberry, slateorange, kacho_ga, outrun, ocean_dark, city_lights, github_dark, github_dark_dimmed, discord_old_blurple, aura_dark, panda, noctis_minimus, cobalt2, swift, aura, apprentice, moltack, codeSTACKr, rose_pine, catppuccin_latte, catppuccin_mocha, date_night, one_dark_pro, rose, holi, neon, blue_navy, calm_pink, ambient_gradient]
 
@@ -55,13 +56,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: push *.svg to the output branch
-        uses: crazy-max/ghaction-github-pages@v5.0.0
+      - name: Upload artifact for top-langs ${{ matrix.theme }}
+        uses: actions/upload-artifact@v4
         with:
-          target_branch: grs_example
-          build_dir: profile
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          name: github-readme-top-langs-theme_${{ matrix.theme }}
+          path: profile/github-readme-top-langs-theme_${{ matrix.theme }}.svg
+          retention-days: 1
 
 
   top-langs_layout:
@@ -70,6 +70,7 @@ jobs:
       contents: write
 
     strategy:
+      max-parallel: 1
       matrix:
         layout: [compact, donut, donut-vertical, pie]
 
@@ -85,7 +86,32 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: push *.svg to the output branch
+      - name: Upload artifact for top-langs ${{ matrix.layout }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: github-readme-top-langs-layout_${{ matrix.layout }}
+          path: profile/github-readme-top-langs-layout_${{ matrix.layout }}.svg
+          retention-days: 1
+
+  push-all:
+    runs-on: ubuntu-latest
+    needs: [stats_theme, top-langs_theme, top-langs_layout]
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Create profile directory
+        run: mkdir -p profile
+
+      - name: Download all SVG artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: profile
+          merge-multiple: true
+
+      - name: Push all SVGs to output branch
         uses: crazy-max/ghaction-github-pages@v5.0.0
         with:
           target_branch: grs_example
