@@ -1,0 +1,51 @@
+name: Update README cards
+
+on:
+  schedule:
+    - cron: "0 3 * * *"
+
+  # allows to manually run the job at any time
+  workflow_dispatch:
+
+  # run on every push on the main branch
+  push:
+    branches:
+    - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: generate stats card
+        uses: readme-tools/github-readme-stats-action@v1
+        with:
+          card: stats
+          options: username=zzx517&show_icons=true
+          path: profile/github-readme-stats.svg
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: generate top languages card
+        uses: readme-tools/github-readme-stats-action@v1
+        with:
+          card: top-langs
+          options: username=zzx517&layout=compact&langs_count=6
+          path: profile/github-readme-top-langs.svg
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
+      # push the content of <build_dir> to a branch
+      # the content will be available at https://raw.githubusercontent.com/<github_user>/<repository>/<target_branch>/<file> , or as github page
+      - name: push github-readme-stats.svg and github-readme-top-langs.svg to the output branch
+        uses: crazy-max/ghaction-github-pages@v5.0.0
+        with:
+          target_branch: grs_output
+          build_dir: profile
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

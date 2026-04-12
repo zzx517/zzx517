@@ -15,4 +15,7 @@
     src="https://raw.githubusercontent.com/zzx517/zzx517/refs/heads/snake_output/github-contribution-grid-snake.svg">
 </picture>
 
+![zzx517's GitHub stats](https://raw.githubusercontent.com/zzx517/zzx517/refs/heads/grs_output/github-readme-stats.svg)
+![zzx517's top languages](https://raw.githubusercontent.com/zzx517/zzx517/refs/heads/grs_output/github-readme-top-langs.svg)
+
 </div>
