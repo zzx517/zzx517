@@ -5,7 +5,7 @@
 
 </div>
 
-<picture>
+<p><picture>
   <source
     media="(prefers-color-scheme: dark)"
     srcset="https://raw.githubusercontent.com/zzx517/zzx517/refs/heads/grs_output/github-readme-stats-dark.svg">
@@ -15,9 +15,9 @@
   <img
     alt="github contribution grid snake animation"
     src="https://raw.githubusercontent.com/zzx517/zzx517/refs/heads/grs_output/github-readme-stats.svg">
-</picture>
+</picture></p>
 
-<picture>
+<p><picture>
   <source
     media="(prefers-color-scheme: dark)"
     srcset="https://raw.githubusercontent.com/zzx517/zzx517/refs/heads/grs_output/github-readme-top-langs-dark.svg">
@@ -27,7 +27,7 @@
   <img
     alt="github contribution grid snake animation"
     src="https://raw.githubusercontent.com/zzx517/zzx517/refs/heads/grs_output/github-readme-top-langs.svg">
-</picture>
+</picture></p>
 
 <div align="center">
 <picture>
